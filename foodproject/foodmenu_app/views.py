@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import ItemModel
 from .forms import AddItemForm
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     item_list = ItemModel.objects.all()
@@ -15,6 +16,7 @@ def detailview(request,item_id):
     data=ItemModel.objects.get(pk=item_id)
     return render(request,"detailitem.html",{"context":data})
 
+@login_required
 def additemview(request):
     if request.method == 'POST':
         form = AddItemForm(request.POST)
