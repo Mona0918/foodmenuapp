@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% extends "base.html"%}
+    {% block body %}
+    <div class="container">
+        <div class="col-md-6">
+            <img src="{{context.item_image}}" class="card" height="250px" width="250px">
+        </div>
+        <div class="col-md-6">
+            <h1>{{context.item_name}}</h1>
+            <h4>{{context.item_desc|wordwrap:10}}</h4>
+            <h3>{{context.item_price}}</h3>
+            <p>{{context.id}}</p>
+            <a href="{% url 'deleteitem' context.id %}" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+    <title>home</title>
+    <link rel="stylesheet" href="{% static 'food/style1.css' %}">
+    {% block body %}
+    {% for item in items %}
+        <div class="row">
+            <div class="col-md-3 offset-md-2">
+                <img class="card" height="250px" width="250px" src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/streams/2014/May/140501/2D274905752676-setting860.png">
+            </div>
+            <div class="col-md-4">
+                <h3>{{item.item_name}}</h3>
+                <h6>Rs.{{item.item_price}}</h6>
+            </div>
+            <div class="col-md-2">
+                <a href="{% url 'detailview' item.id %}" class="btn btn-success">Details</a>
+            </div>
+        </div>
+        
+    {% endfor %}
+    {% endblock %}
